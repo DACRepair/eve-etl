@@ -1,0 +1,6 @@
+requests
+sqlalchemy
+pyodbc
+flask
+click
+flask_bootstrap

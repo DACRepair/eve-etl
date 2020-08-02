@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Auth Server{% endblock %}
+
+{% block content %}
+{{super()}}
+{% if data.logged_in %}
+<div class="container">
+    <div class="container col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Authenticated</h3>
+            </div>
+            <div class="panel-body">
+                <figure>
+                    <img class="img-responsive"
+                         src="https://imageserver.eveonline.com/Character/{{ data.char_id }}_1024.jpg"/>
+                    <figcaption>Character: {{ data.char_name }}</figcaption>
+                    {% if data.char_title %}
+                    <figcaption>Title: {{ data.char_title }}</figcaption>
+                    {% endif %}
+
+                    <figcaption></figcaption>
+                    {% if data.corporation_name %}
+                    <figcaption>Corporation: {{ data.corporation_name }}</figcaption>
+                    {% endif %}
+
+                    {% if data.alliance_name %}
+                    <figcaption>Alliance: {{ data.alliance_name }}</figcaption>
+                    {% endif %}
+
+                    {% if data.faction_name %}
+                    <figcaption>Faction: {{ data.faction_name }}</figcaption>
+                    {% endif %}
+                </figure>
+            </div>
+        </div>
+    </div>
+
+    <div class="container col-lg-8">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">API Stats</h3>
+            </div>
+            <div class="panel-body">
+                Eventually....
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container text-center">
+    <a href="{{ data.url }}"><img src="https://web.ccpgamescdn.com/eveonlineassets/developers/eve-sso-login-black-large.png"></a>
+</div>
+{% endif %}
+
+
+{% endblock %}
