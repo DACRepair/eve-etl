@@ -41,10 +41,9 @@ class AppConfig:
         return float(env_var)
 
     def options(self, section: str):
-        envs = [os.getenv(x) for x in os.environ if x.startswith("{}__".format(section).upper())]
-        print(envs)
+        envs = [x for x in os.environ if x.startswith("{}__".format(section).upper())]
         if len(envs) > 0:
-            return [x.rstrip("{}__".format(section).upper()).lower() for x in envs]
+            return [x.lstrip("{}__".format(section.lower()).upper()).lower() for x in envs]
         else:
             return self._config.options(section)
 
