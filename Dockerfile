@@ -3,11 +3,13 @@ FROM laudio/pyodbc:1.0.4
 WORKDIR /source
 COPY main.py .
 COPY requirements.txt .
-COPY eve_etl/ ./eve-etl
+COPY eve_etl/ ./eve_etl
 COPY templates/ ./templates
 COPY static/ ./static
 
+RUN pip install -r requirements.txt
+
 EXPOSE 5555
 
-ENTRYPOINT python
+ENTRYPOINT python3
 CMD main.py
