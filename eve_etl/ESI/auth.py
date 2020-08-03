@@ -43,6 +43,7 @@ class EVEAuth:
             "redirect_uri": self._redir_url,
             "client_id": self.client_id,
             "code_challenge": chash,
+            "scope": self._scope,
             "code_challenge_method": "S256",
             "state": state
         }
@@ -116,3 +117,8 @@ class EVEAuth:
         query.delete()
         self._db_ses.commit()
         return retr
+
+    def purge_config(self):
+        self._db_ses.query(ConfigModel).filter(ConfigModel.name.like("authserver_%")).delete(
+            synchronize_session="fetch")
+        self._db_ses.commit()

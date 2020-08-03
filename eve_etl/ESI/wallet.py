@@ -9,4 +9,4 @@ class EVEWallet:
 
     def divisions(self):
         url = "https://esi.evetech.net/v1/corporations/{}/wallets/".format(self.corp_id)
-        print(self._esi.get(url=url))
+        print(self._esi.get(url=url).text)
