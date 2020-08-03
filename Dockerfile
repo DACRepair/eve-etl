@@ -12,5 +12,5 @@ RUN touch ./config.ini
 
 EXPOSE 5555
 
-ENTRYPOINT python3
+ENTRYPOINT /usr/local/bin/python3
 CMD main.py
